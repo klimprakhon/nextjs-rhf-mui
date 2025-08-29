@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# React Hook Form + MUI POC (Next.js + TS)
 
-## Getting Started
+This is a proof-of-concept project demonstrating how to integrate react-hook-form
+with Material UI components inside a Next.js + TypeScript setup.
 
-First, run the development server:
+The focus is on form handling with controlled MUI inputs and a container-driven UI structure.
+
+## Project Structure
+
+app/
+├── accounting/
+│ └── page.tsx # Demo page entry point
+│
+├── components/
+│ ├── features/
+│ │ └── accounting/
+│ │ ├── amountSection.tsx # Accordion section for amount inputs
+│ │ └── priceSection.tsx # Accordion section for price inputs
+│ │
+│ └── ui/
+│ ├── input/
+│ │ └── numberInput/
+│ │ ├── numberInput.tsx # RHF Controller wrapper
+│ │ └── numberInputBase.tsx # Pure MUI input rendering
+│ │
+│ └── accordion/
+│ └── accordion.tsx # Base Accordion container that use RHF adapter
+│
+└── README.md
+
+## Installation
 
 ```bash
+# Install dependencies
+npm install
+
+# Run dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Project will be available at http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key Concepts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Accordion
 
-## Learn More
+I use a reusable `Accordion` component as the base container for grouping related sections:
 
-To learn more about Next.js, take a look at the following resources:
+- AmountSection → wraps inputs related to amounts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- PriceSection → wraps inputs related to prices
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This structure makes the form modular and easy to extend.
 
-## Deploy on Vercel
+### 2. Number Input
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+We separate the form logic from the UI rendering:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- NumberInput.tsx
+  Uses `Controller` from `react-hook-form` to connect form state with the UI.
+
+- NumberInputBase.tsx
+  A pure presentational component that renders an MUI <TextField />.
