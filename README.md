@@ -56,7 +56,7 @@ This structure makes the form modular and easy to extend.
 
 ### 2. Number Input
 
-We separate the form logic from the UI rendering:
+I separate the form logic from the UI rendering:
 
 - NumberInput.tsx
   Uses `Controller` from `react-hook-form` to connect form state with the UI.
