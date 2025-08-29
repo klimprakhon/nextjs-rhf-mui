@@ -7,6 +7,7 @@ The focus is on form handling with controlled MUI inputs and a container-driven 
 
 ## Project Structure
 
+```
 app/
 ├── accounting/
 │ └── page.tsx # Demo page entry point
@@ -27,6 +28,7 @@ app/
 │ └── accordion.tsx # Base Accordion container that use RHF adapter
 │
 └── README.md
+```
 
 ## Installation
 
